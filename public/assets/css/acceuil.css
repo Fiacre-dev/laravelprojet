@@ -253,6 +253,7 @@ main #decouverte #voiture2 {
 }
 #decouverte article {
     flex: 1;
+    margin-right: 30px;
 }
 #decouverte article h1 {
     font-size: 3.5em;
