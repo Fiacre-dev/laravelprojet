@@ -1,0 +1,231 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #e1ddff;
+    padding: 20px 40px;
+    overflow-x: hidden;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+header .logo span {
+    color: orange;
+}
+header nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    list-style: none;
+}
+header a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: #000;
+    font-weight: 600;
+}
+header ul li a {
+    position: relative;
+}
+header ul li a.active {
+    padding-bottom: 5px;
+    border-bottom: 5px solid orange;
+}
+header ul li a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 5px;
+    background-color: orange;
+    transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+}
+header ul li a:hover::before {
+    width: 100%;
+}
+header > a {
+    padding: 10px;
+    background-color: #5f66ac;
+    color: #fff;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+#section-1 .presentation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6%;
+    height: 50vh;
+    margin-bottom: 70px;
+}
+#section-1 .presentation .div-1 {
+    flex: 1;
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column; */
+    height: 100%;
+}
+#section-1 .presentation .div-1 h1 {
+    font-size: 3em;
+    margin-bottom: 30px;
+    /* text-align: center; */
+}
+#section-1 .presentation .div-1 h1 span {
+    color: #474fa0;
+}
+#section-1 .presentation .div-1 p {
+    font-size: 1.5em;
+    text-align: justify;
+    font-weight: 500;
+}
+#section-1 .presentation .div-1 form {
+    font-size: 1.1em;
+    margin-top: 40px;
+    background-color: #fff;
+    width: 100%;
+    padding: 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+#section-1 .presentation .div-1 form > div {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 7px;
+
+    border-right: 1px dashed black;
+}
+#section-1 .presentation .div-1 form label {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+#section-1 .presentation .div-1 form label i {
+    margin-left: 5px;
+}
+#section-1 .presentation .div-1 form input,
+#section-1 .presentation .div-1 form select {
+    font-size: 14px;
+    outline: 0;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+#section-1 .presentation .div-1 form .quick-search-button {
+    padding: 15px 20px;
+    width: 150px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #5f66ac;
+    border: none;
+    border-radius: 10px;
+}
+#section-1 .presentation .div-2 {
+    width: 50%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+#section-1 .presentation .div-2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#logo-vehicules {
+    width: 60%;
+    margin: auto;
+    height: 100px;
+}
+#logo-vehicules img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#comment-ca-marche {
+    background-color: #fff;
+    width: 60%;
+    margin: auto;
+    margin-block: 70px;
+    padding: 30px 50px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+#comment-ca-marche h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 50px;
+}
+#comment-ca-marche h1 span {
+    color: #5f66ac;
+}
+#comment-ca-marche > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#comment-ca-marche img {
+    width: 150px;
+}
+#comment-ca-marche img.rigth {
+    position: relative;
+    top: -40px;
+}
+#comment-ca-marche > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-direction: column;
+    width: 120px;
+    /* padding-inline:40px; */
+}
+#comment-ca-marche > div > div p {
+    text-align: center;
+}
+#comment-ca-marche img.reversed {
+    transform: rotate(180deg);
+}
+#comment-ca-marche > div > div > div {
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #5f66ac;
+    width: 80px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #fff;
+}
+main img:last-child {
+    height: 350px;
+    object-fit: cover;
+    margin-block: 40px;
+}
