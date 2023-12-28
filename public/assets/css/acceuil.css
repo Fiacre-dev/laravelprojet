@@ -5,7 +5,7 @@
 }
 body {
     background-color: #e1ddff;
-    padding: 20px 40px;
+    padding: 30px 50px;
     overflow-x: hidden;
 }
 header {
@@ -250,6 +250,7 @@ main #decouverte #voiture2 {
     align-items: center;
     justify-content: space-around;
     gap: 10%;
+    padding-inline: 50px;
 }
 #decouverte article {
     flex: 1;
@@ -315,4 +316,165 @@ main #decouverte #voiture2 {
 }
 #decouverte article .row .description p {
     font-size: 1.2em;
+}
+#nos-offres h1 {
+    font-size: 3em;
+    text-align: center;
+}
+#nos-offres h1 span {
+    color: #5f66ac;
+}
+#nos-offres .nos-vehicules {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+#nos-offres .nos-vehicules article {
+    width: 437px;
+    height: 531.413px;
+    flex-shrink: 0;
+
+    padding: 20px;
+
+    border-radius: 26px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+#nos-offres .nos-vehicules article .image {
+    /* width: 90%; */
+    border-radius: 15px;
+    background: rgba(233, 233, 233, 0.84);
+    margin: auto;
+    text-align: center;
+    position: relative;
+}
+#nos-offres .nos-vehicules article .image img {
+    width: 80%;
+    object-fit: cover;
+}
+#nos-offres .nos-vehicules article .image .add-to-favorite {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    outline: 0;
+    top: 5px;
+    right: 15px;
+    font-size: 2.3em;
+}
+#nos-offres .nos-vehicules article .annee {
+    width: 70px;
+    height: 30.318px;
+    flex-shrink: 0;
+    margin-top: 10px;
+
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.44);
+    color: rgba(0, 0, 0, 0.92);
+
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#nos-offres .nos-vehicules article .nom-vehicule {
+    color: #000;
+
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+#nos-offres .nos-vehicules article .location-prix {
+    color: #ff8000;
+
+    font-family: Poppins;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+#nos-offres .nos-vehicules article .location-prix span {
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+}
+#nos-offres .nos-vehicules article hr {
+    background: #d9d9d9;
+    margin-bottom: 10px;
+}
+#nos-offres .nos-vehicules article .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+}
+#nos-offres .nos-vehicules article .row > div {
+    display: flex;
+    align-items: center;
+}
+#nos-offres .nos-vehicules article .row span {
+    color: rgba(0, 0, 0, 0.81);
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+#nos-offres .nos-vehicules article .row .users svg {
+    width: 32px;
+    height: 26.95px;
+}
+#nos-offres .nos-vehicules article .row .manual svg {
+    width: 28px;
+    height: 23.581px;
+}
+#nos-offres .nos-vehicules article .row .gasoil svg {
+    width: 32px;
+    height: 26.95px;
+}
+#nos-offres .nos-vehicules article a:last-child {
+    display: block;
+    padding: 5px;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    background: #474fa0;
+    color: #fff;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 600;
+}
+#nos-offres #voir-plus-de-vehicules {
+    width: 162px;
+    height: 63px;
+    border-radius: 5px;
+    background: #474fa0;
+    padding: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: auto;
+    text-align: center;
+    margin-block: 50px;
+
+    color: #fff;
+    text-decoration: none;
+
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
