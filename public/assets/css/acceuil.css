@@ -7,6 +7,13 @@ body {
     background-color: #e1ddff;
     padding: 30px 50px;
     overflow-x: hidden;
+    font-family: Poppins, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body > div {
+    max-width: 1920px;
 }
 header {
     display: flex;
@@ -368,39 +375,26 @@ main #decouverte #voiture2 {
 #nos-offres .nos-vehicules article .annee {
     width: 70px;
     height: 30.318px;
-    flex-shrink: 0;
     margin-top: 10px;
 
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.44);
     color: rgba(0, 0, 0, 0.92);
-
-    font-family: Poppins;
     font-size: 20px;
-    font-style: normal;
     font-weight: 500;
-    line-height: normal;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 #nos-offres .nos-vehicules article .nom-vehicule {
-    color: #000;
-
-    font-family: Poppins;
     font-size: 20px;
-    font-style: normal;
     font-weight: 500;
-    line-height: normal;
 }
 #nos-offres .nos-vehicules article .location-prix {
     color: #ff8000;
 
-    font-family: Poppins;
     font-size: 28px;
-    font-style: normal;
     font-weight: 500;
-    line-height: normal;
 }
 #nos-offres .nos-vehicules article .location-prix span {
     font-size: 20px;
@@ -423,11 +417,7 @@ main #decouverte #voiture2 {
 }
 #nos-offres .nos-vehicules article .row span {
     color: rgba(0, 0, 0, 0.81);
-    font-family: Poppins;
     font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
 }
 #nos-offres .nos-vehicules article .row .users svg {
     width: 32px;
@@ -450,7 +440,6 @@ main #decouverte #voiture2 {
     border-radius: 10px;
     background: #474fa0;
     color: #fff;
-    font-family: Poppins;
     font-size: 20px;
     font-weight: 600;
 }
@@ -472,9 +461,84 @@ main #decouverte #voiture2 {
     color: #fff;
     text-decoration: none;
 
-    font-family: Poppins;
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+footer {
+    background: rgba(235, 0, 255, 0.04);
+    padding: 30px 50px;
+    margin-inline: -50px;
+    width: 100vw;
+    max-width: 1920px;
+    margin-bottom: -30px;
+}
+footer .description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 37px;
+    width: 40%;
+}
+footer .description h1 {
+    color: #000;
+    font-family: Montserrat;
+    font-size: 48px;
+    font-weight: 700;
+}
+footer .description h1 span {
+    color: #ff8000;
+}
+footer h1 {
+    font-size: 32px;
+    font-weight: 500;
+}
+footer .description p {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: justify;
+}
+footer a {
+    text-decoration: none;
+}
+footer > div {
+    display: flex;
+    align-items: top;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+footer .contact > div {
+    display: flex;
+    align-items: center;
+    margin-block: 10px;
+    gap: 15px;
+}
+footer .contact svg {
+    width: 24px;
+    height: 24px;
+}
+footer .liens-utiles > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+footer .liens-utiles a,
+footer .contact p {
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 16px;
+    font-weight: 500;
+}
+footer hr {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+}
+footer #copyrigth {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 10px;
 }
