@@ -331,6 +331,7 @@ main #decouverte #voiture2 {
 #nos-offres h1 span {
     color: #5f66ac;
 }
+
 #nos-offres .nos-vehicules {
     margin-top: 40px;
     display: flex;
@@ -514,16 +515,52 @@ footer .contact > div {
     align-items: center;
     margin-block: 10px;
     gap: 15px;
+    margin-block: 20px;
 }
 footer .contact svg {
     width: 24px;
     height: 24px;
+}
+footer .middle-underline {
+    position: relative;
+}
+footer .contact .middle-underline::before {
+    width: 7%;
+}
+footer .contact .middle-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: calc(7% + 5px);
+    height: 5px;
+    width: 50px;
+    background-color: orange;
+}
+footer .middle-underline::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 5px;
+    width: 25%;
+    background-color: orange;
 }
 footer .liens-utiles > div {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+footer .liens-utiles > div a {
+    width: 100%;
+    text-align: left;
+    margin-block: 10px;
+}
+footer .contact h1 {
+    margin-bottom: 30px;
+}
+footer .liens-utiles h1 {
+    margin-bottom: 20px;
 }
 footer .liens-utiles a,
 footer .contact p {

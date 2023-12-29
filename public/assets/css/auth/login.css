@@ -1,0 +1,144 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Poppins, sans-serif;
+    height: 100vh;
+}
+body h1 {
+    font-family: Montserrat;
+    font-size: 96px;
+    font-weight: 700;
+
+    margin-bottom: 30px;
+}
+body h1 span {
+    color: #ff8000;
+}
+body form > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+body form > div label {
+    font-size: 18px;
+    width: 100%;
+    margin-block: 5px;
+    text-align: left;
+}
+body form > div > div {
+    width: 100%;
+    position: relative;
+}
+body form > div input {
+    background-color: #f1f3f6;
+    border: none;
+    padding: 7px 58px 7px 7px;
+    font-size: 20px;
+    outline: 0;
+    height: 50px;
+    width: 100%;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+body form > div > div .icon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 56px;
+    height: 50px;
+    border-radius: 8px;
+    background: #474fa0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.forget-password {
+    width: fit-content;
+    margin-left: auto;
+    margin-block: 15px;
+}
+#login-link {
+    outline: 0;
+    border: 0;
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    margin-block: 30px;
+    text-align: center;
+    color: #fff;
+    background-color: #fd7401;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+}
+#login-link:hover {
+    border: 1px solid #fd7401;
+    color: #fd7401;
+    background-color: #fff;
+}
+.another-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 60%;
+    margin: auto;
+}
+hr {
+    border-color: #c2c2c2;
+    flex: 1;
+    display: flex;
+}
+.another-option span {
+    color: #c2c2c2;
+    font-family: Poppins;
+    font-size: 14px;
+    margin-inline: 20px;
+}
+form #inscription-link {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    margin-block: 30px;
+    text-align: center;
+    color: #fd7401;
+    background-color: #fff;
+    border: 1px solid #fd7401;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+}
+form #inscription-link:hover {
+    background-color: #fd7401;
+    color: #fff;
+}

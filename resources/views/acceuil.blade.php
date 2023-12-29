@@ -14,7 +14,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;1,400&family=Poppins:ital,wght@0,100;0,400;1,500;1,600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('assets/css/acceuil.css') }}" />
-        <title>Document</title>
+        <title>AutoRent | Acceuil</title>
     </head>
     <body>
         <div>
@@ -30,7 +30,7 @@
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </nav>
-                <a href="#">Se connecter</a>
+                <a href="{{ route('login') }}">Se connecter</a>
             </header>
             <main>
                 <section id="section-1">
@@ -463,8 +463,8 @@
                             Le choix incontesté des connaisseurs en matière de location de véhicules. Nous ne sommes pas simplement un service, nous sommes une expérience.
                         </p>
                     </section>
-                    <section class="contact middle-underline">
-                        <h1>Contact</h1>
+                    <section class="contact">
+                        <h1 class="middle-underline">Contact</h1>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
                                 <path d="M13.0001 12.4582C12.2818 12.4582 11.5929 12.1728 11.085 11.6649C10.5771 11.157 10.2917 10.4681 10.2917 9.74984C10.2917 9.03154 10.5771 8.34267 11.085 7.83476C11.5929 7.32685 12.2818 7.0415 13.0001 7.0415C13.7184 7.0415 14.4073 7.32685 14.9152 7.83476C15.4231 8.34267 15.7084 9.03154 15.7084 9.74984C15.7084 10.1055 15.6384 10.4577 15.5023 10.7863C15.3661 11.1149 15.1667 11.4134 14.9152 11.6649C14.6637 11.9164 14.3651 12.1159 14.0365 12.252C13.7079 12.3881 13.3557 12.4582 13.0001 12.4582ZM13.0001 2.1665C10.9889 2.1665 9.06001 2.96546 7.63786 4.38761C6.2157 5.80976 5.41675 7.73861 5.41675 9.74984C5.41675 15.4373 13.0001 23.8332 13.0001 23.8332C13.0001 23.8332 20.5834 15.4373 20.5834 9.74984C20.5834 7.73861 19.7845 5.80976 18.3623 4.38761C16.9402 2.96546 15.0113 2.1665 13.0001 2.1665Z" fill="black"/>
@@ -490,8 +490,8 @@
                             </p>
                         </div>
                     </section>
-                    <section class="liens-utiles middle-underline">
-                        <h1>Liens utiles</h1>
+                    <section class="liens-utiles">
+                        <h1 class="middle-underline">Liens utiles</h1>
                         <div>
                             <a href="#">Explorer</a>
                             <a href="#">Give-back</a>

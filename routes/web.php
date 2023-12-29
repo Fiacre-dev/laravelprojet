@@ -18,4 +18,8 @@ Route::get('/home', function () {
 });
 Route::get('/', function () {
     return view("acceuil");
-});
+})->name("acceuil");
+Route::view("login", "auth.login")->name("login");
+Route::view("register", "auth.register")->name("register");
+Route::view("catalogue", "catalogue")->name("catalogue");
+Route::view("paiement", "paiement")->name("paiement");
