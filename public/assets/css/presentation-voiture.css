@@ -1,0 +1,355 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #e1ddff;
+    padding: 30px 50px;
+    overflow-x: hidden;
+    font-family: Poppins, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body > div {
+    max-width: 1920px;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+header .logo span {
+    color: orange;
+}
+header nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    list-style: none;
+}
+header a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: #000;
+    font-weight: 600;
+}
+header ul li a {
+    position: relative;
+}
+header ul li a.active::before {
+    /* padding-bottom: 5px;
+    border-bottom: 5px solid orange; */
+    width: 60%;
+}
+header ul li a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 5px;
+    background-color: orange;
+    transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+}
+header ul li a:hover::before {
+    width: 100%;
+}
+header > a {
+    padding: 10px;
+    background-color: #474fa0;
+    color: #fff;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.hierarchie {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-block: 20px;
+}
+.hierarchie a {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+}
+section h1 {
+    font-size: 48px;
+    font-style: italic;
+    font-weight: 600;
+}
+section > div {
+    display: flex;
+    align-items: top;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+section > div > div {
+    flex: 1;
+    margin-top: 20px;
+}
+section .voiture {
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.31);
+    background: rgba(255, 255, 255, 0.42);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px #000;
+}
+section .voiture img {
+    width: calc(100% - 40px);
+    max-width: 400px;
+    object-fit: cover;
+}
+section > div .carac {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block: 20px;
+    padding: 15px 10px;
+}
+section > div .carac * {
+    color: #000;
+    font-size: 24px;
+    font-weight: 600;
+}
+section > div .carac:nth-child(2n) {
+    background: rgba(217, 217, 217, 0.33);
+}
+section > div form {
+    width: 550px;
+    border-radius: 10px;
+    border: 2px solid #d9d9d9;
+    box-shadow: 0 0 5px #000;
+    height: fit-content;
+}
+section > div form h2 {
+    border-radius: 10px 10px 0px 0px;
+    background: #474fa0;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+section > div form .form-group {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-block: 20px;
+    margin-inline: 30px;
+    gap: 10px;
+}
+section > div form .form-group label {
+    width: 100%;
+    color: rgba(0, 0, 0, 0.71);
+    font-size: 32px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+section > div form .form-group label svg {
+    width: 28px;
+    height: 28px;
+}
+section > div form .form-group input,
+section > div form .form-group select {
+    width: 100%;
+    margin-inline: 30px;
+    padding: 10px;
+    border: 1px solid #d9d9d9;
+    background: rgba(217, 217, 217, 0.38);
+    outline: 0;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 24px;
+    font-weight: 500;
+}
+section > div form .extra {
+    margin-inline: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block: 20px;
+}
+section > div form .extra hr {
+    flex: 1;
+}
+section > div form .extra span {
+    margin-inline: 15px;
+    color: rgba(0, 0, 0, 0.64);
+    font-size: 24px;
+    font-weight: 500;
+}
+section > div form .choice {
+    margin-inline: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-block: 20px;
+}
+section > div form .choice input {
+    border-radius: 5px;
+    border: 1px solid #4a4a4a;
+    background: #fff;
+    width: 28px;
+    height: 28px;
+}
+section > div form .choice label {
+    color: rgba(0, 0, 0, 0.7);
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 500;
+}
+section > div form .buttons {
+    margin-block: 25px;
+    margin-inline: 30px;
+    display: flex;
+    align-items: center;
+}
+section > div form .buttons button {
+    flex: 1;
+    padding: 16px 26px;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    border-radius: 5px 0px 0px 5px;
+    background: #474fa0;
+    border: none;
+    outline: 0;
+}
+section > div form .buttons #price-button {
+    color: #000;
+    font-size: 28px;
+    font-weight: 700;
+    border-radius: 0px 5px 5px 0px;
+    background: #f2e1ff;
+}
+footer {
+    background: rgba(235, 0, 255, 0.04);
+    padding: 30px 50px;
+    margin-inline: -50px;
+    width: 100vw;
+    max-width: 1920px;
+    margin-bottom: -30px;
+    margin-top: 20%;
+}
+footer .description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 37px;
+    width: 40%;
+}
+footer .description h1 {
+    color: #000;
+    font-family: Montserrat;
+    font-size: 48px;
+    font-weight: 700;
+}
+footer .description h1 span {
+    color: #ff8000;
+}
+footer h1 {
+    font-size: 32px;
+    font-weight: 500;
+}
+footer .description p {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: justify;
+}
+footer a {
+    text-decoration: none;
+}
+footer > div {
+    display: flex;
+    align-items: top;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+footer .contact > div {
+    display: flex;
+    align-items: center;
+    margin-block: 10px;
+    gap: 15px;
+    margin-block: 20px;
+}
+footer .contact svg {
+    width: 24px;
+    height: 24px;
+}
+footer .middle-underline {
+    position: relative;
+}
+footer .contact .middle-underline::before {
+    width: 7%;
+}
+footer .contact .middle-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: calc(7% + 5px);
+    height: 5px;
+    width: 50px;
+    background-color: orange;
+}
+footer .middle-underline::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 5px;
+    width: 25%;
+    background-color: orange;
+}
+footer .liens-utiles > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+footer .liens-utiles > div a {
+    width: 100%;
+    text-align: left;
+    margin-block: 10px;
+}
+footer .contact h1 {
+    margin-bottom: 30px;
+}
+footer .liens-utiles h1 {
+    margin-bottom: 20px;
+}
+footer .liens-utiles a,
+footer .contact p {
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 16px;
+    font-weight: 500;
+}
+footer hr {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+}
+footer #copyrigth {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 10px;
+}

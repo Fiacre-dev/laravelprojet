@@ -21,5 +21,10 @@ Route::get('/', function () {
 })->name("acceuil");
 Route::view("login", "auth.login")->name("login");
 Route::view("register", "auth.register")->name("register");
+Route::view("contact", "contact")->name("contact");
 Route::view("catalogue", "catalogue")->name("catalogue");
 Route::view("paiement", "paiement")->name("paiement");
+Route::view("liste-vehicules", "liste-vehicule")->name("liste_vehicule");
+Route::view("liste-clients", "liste-clients")->name("liste_client");
+Route::view("gerer-reservation", "gerer-reservation")->name("gerer_reservation");
+Route::view("presentation-voiture", "presentation-voiture")->name("presentation_voiture");
