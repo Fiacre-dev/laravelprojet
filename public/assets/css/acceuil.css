@@ -72,6 +72,19 @@ header > a {
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
+#logoutLink{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color:#fff;
+    font-size: 3em;
+    border-radius: 10px;
+    background-color: red;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
 #section-1 .presentation {
     display: flex;
     align-items: center;
@@ -333,16 +346,17 @@ main #decouverte #voiture2 {
 }
 
 #nos-offres .nos-vehicules {
-    margin-top: 40px;
+    margin-block: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
+
 }
 #nos-offres .nos-vehicules article {
     width: 437px;
-    height: 531.413px;
+    height: fit-content;
     flex-shrink: 0;
 
     padding: 20px;
@@ -406,29 +420,29 @@ main #decouverte #voiture2 {
     background: #d9d9d9;
     margin-bottom: 10px;
 }
-#nos-offres .nos-vehicules article .row {
+#nos-offres .nos-vehicules article .ligne {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: transparent;
 }
-#nos-offres .nos-vehicules article .row > div {
+#nos-offres .nos-vehicules article .ligne > div {
     display: flex;
     align-items: center;
 }
-#nos-offres .nos-vehicules article .row span {
+#nos-offres .nos-vehicules article .ligne span {
     color: rgba(0, 0, 0, 0.81);
     font-size: 16px;
 }
-#nos-offres .nos-vehicules article .row .users svg {
+#nos-offres .nos-vehicules article .ligne .users svg {
     width: 32px;
     height: 26.95px;
 }
-#nos-offres .nos-vehicules article .row .manual svg {
+#nos-offres .nos-vehicules article .ligne .manual svg {
     width: 28px;
     height: 23.581px;
 }
-#nos-offres .nos-vehicules article .row .gasoil svg {
+#nos-offres .nos-vehicules article .ligne .gasoil svg {
     width: 32px;
     height: 26.95px;
 }
