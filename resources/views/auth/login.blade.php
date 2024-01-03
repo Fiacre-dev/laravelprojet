@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;1,400&family=Poppins:ital,wght@0,100;0,400;1,500;1,600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('assets/css/auth/login.css') }}" />
@@ -12,11 +13,16 @@
     <body>
         <main>
             <h1>Auto<span>Rent.</span></h1>
-            <form action="#">
+            @component('component.successMessage')
+            @endcomponent
+            <form action="{{ route('handleLogin') }}" method="POST">
+                @csrf
+                @method('post')
                 <div class="email">
+                    @component('component.formError',['name' => "email"])  @endcomponent
                     <label for="email">Email adress</label>
                     <div>
-                        <input type="text" name="email">
+                        <input type="email" name="email" value="{{ old('email') }}">
                         <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                                 <path d="M4.66683 23.3334C4.02516 23.3334 3.47605 23.1051 3.0195 22.6486C2.56294 22.192 2.33427 21.6425 2.3335 21.0001V7.00008C2.3335 6.35841 2.56216 5.8093 3.0195 5.35275C3.47683 4.89619 4.02594 4.66753 4.66683 4.66675H23.3335C23.9752 4.66675 24.5247 4.89541 24.982 5.35275C25.4393 5.81008 25.6676 6.35919 25.6668 7.00008V21.0001C25.6668 21.6417 25.4386 22.1912 24.982 22.6486C24.5254 23.1059 23.9759 23.3342 23.3335 23.3334H4.66683ZM14.0002 15.1667L4.66683 9.33341V21.0001H23.3335V9.33341L14.0002 15.1667ZM14.0002 12.8334L23.3335 7.00008H4.66683L14.0002 12.8334ZM4.66683 9.33341V7.00008V21.0001V9.33341Z" fill="white"/>
@@ -27,6 +33,7 @@
                 <div class="password">
                     <label for="password">Password</label>
                     <div>
+                        @component('component.formError',['name' => "password"])  @endcomponent
                         <input type="password" name="password">
                         <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
