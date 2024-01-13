@@ -21,41 +21,49 @@
             <h1>Finalisez votre paiement en <span>un clic !</span></h1>
             <section id="paiement-section">
                 <h2>Adresse de livraison</h2>
-                <form action="#">
+                <form action="{{ route("save.livraison",$reservation->id) }}" method="post">
+                    @method('post')
+                    @csrf
                     <div class="form-group">
                         <div>
                             <label for="nom">Nom</label>
-                            <input type="text" name="nom">
+                            <input type="text" name="nom" required placeholder="Votre nom">
                         </div>
                         <div>
                             <label for="prenom">Prénom</label>
-                            <input type="text" name="prenom">
+                            <input type="text" name="prenom" required placeholder="Votre prenom">
                         </div>
                     </div>
                     <div class="form-group">
                         <div>
                             <label for="tel">Tel</label>
-                            <input type="text" name="tel">
+                            <input type="tel" name="tel" required placeholder="+22998754896">
                         </div>
                         <div>
                             <label for="adresse">Adresse</label>
-                            <input type="text" name="adresse">
+                            <select name="lieu" id="lieu" required>
+                                <option value="" selected hidden>Choisir un lieu</option>
+                                @foreach ($villes as $ville)
+                                    <option value="{{ $ville->id }}">{{ $ville->nom }}</option>
+                                @endforeach
+                            </select>
+                            {{-- <input type="text" name="adresse" required> --}}
                         </div>
                     </div>
                     <h2>Order summary</h2>
                     <div class="summary-group">
-                        <h3>Toyota Corolla (06 jours)</h3>
-                        <p class="value">120000</p>
+                        <h3>{{ $reservation->vehicule->nom }}Toyota Corolla (06 jours)</h3>
+                        <p class="value">{{ $reservation->montant }}</p>
                     </div>
                     <div class="summary-group">
                         <h3>Quotion</h3>
-                        <p class="value">8000</p>
+                        <p class="value">{{ $reservation->vehicule->quotion }}</p>
                     </div>
                     <hr>
                     <div class="total">
                         <h2>TOTAL</h2>
                         <p class="total-price">
-                            128000 FR
+                            {{ $reservation->montant + $reservation->vehicule->quotion}} FR
                         </p>
                     </div>
                     <div class="confirm-cancel-buttons">

@@ -1,8 +1,14 @@
 <?php
 
+use App\Models\Ville;
+use App\Models\Reservation;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CatalogueController;
+use App\Http\Controllers\PresentationVoitureController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +38,36 @@ Route::middleware(["guest"])->group(function () {
 Route::post("logout", [AuthController::class, "logout"])->name("logout")->middleware("auth");
 
 Route::view("contact", "contact")->name("contact");
-Route::view("catalogue", "catalogue")->name("catalogue");
+Route::get("catalogue/{name?}", [CatalogueController::class, "index"])->name("catalogue");
 Route::view("paiement", "paiement")->name("paiement");
 Route::view("liste-vehicules", "liste-vehicule")->name("liste_vehicule");
 Route::view("liste-clients", "liste-clients")->name("liste_client");
 Route::view("gerer-reservation", "gerer-reservation")->name("gerer_reservation");
-Route::view("presentation-voiture", "presentation-voiture")->name("presentation_voiture");
+Route::get("presentation-voiture/{vehicule:id}", [PresentationVoitureController::class, "index"])->name("presentation_voiture")->missing(function () {
+    return to_route("acceuil");
+});
+Route::post("/save/reservation/paiement", [PresentationVoitureController::class, "save"])->name("save_reservation");
+Route::get("paiement/{reservation:id}", function (Reservation $reservation) {
+    $reservation->load("vehicule");
+    return view("paiement", [
+        "reservation" => $reservation,
+        "villes" => Ville::all()
+    ]);
+})->name("paiement");
+Route::post("paiement/{reservation:id}", function (Request $request, Reservation $reservation) {
+    $reussi = DB::table("livraison")->insert([
+        "reservation_id" => $reservation->id,
+        "nom" => $request->input("nom"),
+        "prenom" => $request->input("prenom"),
+        "telephone" => $request->input("tel"),
+        "ville_id" => $request->input("lieu"),
+    ]);
+    if ($reussi) {
+        session()->flash("success", "Paiement réussi avec succès");
+    } else {
+        session()->flash("error", "Une erreur est survenue");
+    }
+    return to_route("acceuil");
+})->name("save.livraison")->missing(function () {
+    return to_route("acceuil");
+});

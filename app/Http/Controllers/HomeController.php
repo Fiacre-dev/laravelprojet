@@ -13,7 +13,7 @@ class HomeController extends Controller
         /**
          * @var \Illuminate\Pagination\LengthAwarePaginator
          */
-        $vehicules = Vehicule::select(["nom", "nombre_places", "transmission", "carburant", "prix_location", "annee"])->paginate(20);
+        $vehicules = Vehicule::select(["id", "nom", "nombre_places", "transmission", "carburant", "prix_location", "annee"])->paginate(20);
         return view("acceuil", compact("vehicules"));
     }
 }

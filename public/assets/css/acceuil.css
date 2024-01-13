@@ -366,6 +366,11 @@ main #decouverte #voiture2 {
     background: #fff;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+#nos-offres .nos-vehicules article > a{
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
 #nos-offres .nos-vehicules article .image {
     /* width: 90%; */
     border-radius: 15px;

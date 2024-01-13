@@ -19,27 +19,9 @@
     </head>
     <body>
         <div>
-            <header>
-                <div class="logo">
-                    <h1>Auto<span>Rent.</span></h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="#" class="active">Accueil</a></li>
-                        <li><a href="#">Catalogue</a></li>
-                        <li><a href="#">Give-Back</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </nav>
-                @guest
-                    <a href="{{ route('login') }}">Se connecter</a>
-                @endguest
-                @auth
-                    <a href="{{ route('logout') }}" id="logoutLink" title="Se déconnecter">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                    </a>
-                @endauth
-            </header>
+            @component('component.header')
+
+            @endcomponent
             <main>
                 <section id="section-1">
                     <div class="presentation">
@@ -53,7 +35,7 @@
                                 de véhicules. Louez dès aujourd'hui et partez à la
                                 conquête de vos destinations préférées.
                             </p>
-                            <form action="" id="reservation-rapide">
+                            <form action="{{ route("catalogue") }}" id="reservation-rapide" method="GET">
                                 <div class="nb-de-place">
                                     <label for="nb-de-place"
                                         >Nb de place
@@ -179,7 +161,10 @@
                     <h1>Découvrez nos meilleurs <span>offres!</span></h1>
                     <div class="nos-vehicules">
                         @foreach ($vehicules as $vehicule)
-                        <article>
+                            @component("component.presentation-voiture",["vehicule" => $vehicule])
+
+                            @endcomponent
+                        {{-- <article>
                             <div class="image">
                                 <img src="{{ asset('assets/img/voiture31.png') }}" alt="">
                                 <button class="add-to-favorite">❤️</button>
@@ -224,7 +209,7 @@
                                 </div>
                             </div>
                             <a href="#">Réserver</a>
-                        </article>
+                        </article> --}}
                         @endforeach
                     </div>
                     {{ $vehicules->links() }}

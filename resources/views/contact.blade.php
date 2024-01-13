@@ -18,19 +18,9 @@
     </head>
     <body>
         <div>
-            <header>
-                <div class="logo">
-                    <h1>Auto<span>Rent.</span></h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="{{ route('acceuil') }}">Accueil</a></li>
-                        <li><a href="#">Catalogue</a></li>
-                        <li><a href="#" class="active">Contact</a></li>
-                    </ul>
-                </nav>
-                <a href="{{ route('login') }}">Se connecter</a>
-            </header>
+            @component('component.header')
+
+            @endcomponent
             <main>
                 <div class="hierarchie">
                     <a href="{{ route('acceuil') }}">Home</a>

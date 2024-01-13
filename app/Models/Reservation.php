@@ -10,10 +10,12 @@ class Reservation extends Model
     use HasFactory;
     protected $fillable = [
         "vehicule_id",
-        "vuser_id",
+        "user_id",
         "ville_id",
         'date_debut',
-        'date_fin'
+        'date_fin',
+        "paye",
+        "montant"
     ];
     protected $casts = [
         'date_debut' => 'datetime',
@@ -21,4 +23,9 @@ class Reservation extends Model
     ];
 
     public $timestamps = false;
+
+    public function vehicule()
+    {
+        return $this->belongsTo(Vehicule::class);
+    }
 }

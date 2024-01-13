@@ -18,19 +18,9 @@
     </head>
     <body>
         <div>
-            <header>
-                <div class="logo">
-                    <h1>Auto<span>Rent.</span></h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="{{ route('acceuil') }}">Accueil</a></li>
-                        <li><a href="#">Catalogue</a></li>
-                        <li><a href="#" class="active">Contact</a></li>
-                    </ul>
-                </nav>
-                <a href="{{ route('login') }}">Se connecter</a>
-            </header>
+            @component('component.header')
+
+            @endcomponent
             <main>
                 <div class="hierarchie">
                     <a href="{{ route('acceuil') }}">Home</a>
@@ -38,7 +28,7 @@
                     <a href="{{ route('catalogue') }}">Catalogue</a>
                 </div>
                 <section>
-                    <h1>SolaraElite Flat</h1>
+                    <h1>{{ $vehicule->nom }}</h1>
                     <div>
                         <div>
                             <div class="voiture">
@@ -52,7 +42,7 @@
                                     <span>Prix</span>
                                 </div>
                                 <div>
-                                    13.000 Fr / jour 
+                                    {{ $vehicule->prix_location }} Fr / jour
                                 </div>
                             </div>
                             <div class="carac">
@@ -76,7 +66,7 @@
                                     <span>Année</span>
                                 </div>
                                 <div>
-                                    2019
+                                    {{ $vehicule->annee }}
                                 </div>
                             </div>
                             <div class="carac">
@@ -87,7 +77,7 @@
                                     <span>Places</span>
                                 </div>
                                 <div>
-                                    06
+                                    {{ $vehicule->nombre_places }}
                                 </div>
                             </div>
                             <div class="carac">
@@ -98,7 +88,7 @@
                                     <span>Quotion</span>
                                 </div>
                                 <div>
-                                    82 000 Fr
+                                    {{ $vehicule->quotion }}Fr
                                 </div>
                             </div>
                             <div class="carac">
@@ -109,11 +99,13 @@
                                     <span>Transmission</span>
                                 </div>
                                 <div>
-                                    Automatique
+                                    {{ $vehicule->transmission }}
                                 </div>
                             </div>
                         </div>
-                        <form>
+                        <form action="{{ route('save_reservation') }}" method="post">
+                            @csrf
+                            @method('post')
                             <h2>Récapitulatif</h2>
                             <div class="form-group">
                                 <label for="lieu">
@@ -122,8 +114,11 @@
                                         <path d="M8.4 10.322C7.60435 10.322 6.84129 10.0501 6.27868 9.56604C5.71607 9.08198 5.4 8.42546 5.4 7.7409C5.4 7.05634 5.71607 6.39982 6.27868 5.91577C6.84129 5.43171 7.60435 5.15977 8.4 5.15977C9.19565 5.15977 9.95871 5.43171 10.5213 5.91577C11.0839 6.39982 11.4 7.05634 11.4 7.7409C11.4 8.07986 11.3224 8.4155 11.1716 8.72866C11.0209 9.04182 10.7999 9.32636 10.5213 9.56604C10.2427 9.80572 9.91203 9.99584 9.54805 10.1256C9.18407 10.2553 8.79397 10.322 8.4 10.322ZM8.4 0.513733C6.17218 0.513733 4.03561 1.27516 2.4603 2.63052C0.884997 3.98588 0 5.82414 0 7.7409C0 13.1613 8.4 21.1628 8.4 21.1628C8.4 21.1628 16.8 13.1613 16.8 7.7409C16.8 5.82414 15.915 3.98588 14.3397 2.63052C12.7644 1.27516 10.6278 0.513733 8.4 0.513733Z" fill="black" fill-opacity="0.71"/>
                                     </svg>
                                 </label>
-                                <select name="lieu" id="lieu">
+                                <select name="lieu" id="lieu" required>
                                     <option value="" selected hidden>Choisir un lieu</option>
+                                    @foreach ($villes as $ville)
+                                        <option value="{{ $ville->id }}">{{ $ville->nom }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
@@ -133,7 +128,7 @@
                                         <path d="M24.5 23.3333V6.99998C24.5 5.71315 23.4535 4.66665 22.1667 4.66665H19.8333V2.33331H17.5V4.66665H10.5V2.33331H8.16667V4.66665H5.83333C4.5465 4.66665 3.5 5.71315 3.5 6.99998V23.3333C3.5 24.6201 4.5465 25.6666 5.83333 25.6666H22.1667C23.4535 25.6666 24.5 24.6201 24.5 23.3333ZM10.5 21H8.16667V18.6666H10.5V21ZM10.5 16.3333H8.16667V14H10.5V16.3333ZM15.1667 21H12.8333V18.6666H15.1667V21ZM15.1667 16.3333H12.8333V14H15.1667V16.3333ZM19.8333 21H17.5V18.6666H19.8333V21ZM19.8333 16.3333H17.5V14H19.8333V16.3333ZM22.1667 10.5H5.83333V8.16665H22.1667V10.5Z" fill="black" fill-opacity="0.71"/>
                                     </svg>
                                 </label>
-                                <input type="date" name="date_debut" id="date_debut">
+                                <input type="date" name="date_debut" id="date_debut" min="{{ now()->format("Y-m-d") }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="date_fin">
@@ -142,7 +137,7 @@
                                         <path d="M24.5 23.3334V7.00004C24.5 5.71321 23.4535 4.66671 22.1667 4.66671H19.8333V2.33337H17.5V4.66671H10.5V2.33337H8.16667V4.66671H5.83333C4.5465 4.66671 3.5 5.71321 3.5 7.00004V23.3334C3.5 24.6202 4.5465 25.6667 5.83333 25.6667H22.1667C23.4535 25.6667 24.5 24.6202 24.5 23.3334ZM10.5 21H8.16667V18.6667H10.5V21ZM10.5 16.3334H8.16667V14H10.5V16.3334ZM15.1667 21H12.8333V18.6667H15.1667V21ZM15.1667 16.3334H12.8333V14H15.1667V16.3334ZM19.8333 21H17.5V18.6667H19.8333V21ZM19.8333 16.3334H17.5V14H19.8333V16.3334ZM22.1667 10.5H5.83333V8.16671H22.1667V10.5Z" fill="black" fill-opacity="0.71"/>
                                     </svg>
                                 </label>
-                                <input type="date" name="date_debut" id="date_fin">
+                                <input type="date" name="date_fin" id="date_fin" min="{{now()->add(new \DateInterval("P2D"))->format("Y-m-d")}}" required>
                             </div>
                             <div class="extra">
                                 <hr>
@@ -157,6 +152,7 @@
                                 <input type="checkbox" name="siege_enfant" id="siege_enfant">
                                 <label for="siege_enfant">Siège enfant</label>
                             </div>
+                            <input type="hidden" name="vehicule" value="{{ $vehicule->id }}">
                             <div class="buttons">
                                 <button type="submit">Valider</button>
                                 <button type="submit" id="price-button">125.000Fr</button>
@@ -215,5 +211,80 @@
                 </p>
             </footer>
         </div>
+        <script>
+            const prix = @json($vehicule->prix_location);
+            const quotion = @json($vehicule->quotion);
+            const prix_chauffeur = @json($vehicule->prix_chauffeur);
+            const prix_siege_enfant = @json($vehicule->prix_siege_enfant);
+
+            const total_prix_button = document.querySelector("#price-button");
+            total_prix_button.style.fontSize = "20px";
+
+            let prix_total = prix;
+
+            document.getElementById("avec_chauffeur").addEventListener("click",function(){
+                if(this.checked){
+                    prix_total += prix_chauffeur;
+                }else{
+                    prix_total -= prix_chauffeur;
+                }
+
+                total_prix_button.textContent = prix_total + " Francs";
+            });
+
+            document.getElementById("siege_enfant").addEventListener("click",function(){
+                if(this.checked){
+                    prix_total += prix_siege_enfant;
+                }else{
+                    prix_total -= prix_siege_enfant;
+                }
+
+                total_prix_button.textContent = prix_total + " Francs";
+            });
+
+            total_prix_button.textContent = prix_total + " Francs";
+
+            console.log(prix,quotion,prix_chauffeur,prix_siege_enfant);
+        </script>
+
+        <script>
+            const date_debut = document.getElementById("date_debut");
+            const date_fin = document.getElementById("date_fin");
+
+            {{-- console.log(date_fin.min); --}}
+
+            let date_fin_min;
+
+            date_debut.addEventListener("input",function(){
+                const tab = date_debut.value.split("-");
+                let d = Number(tab[2]) + 2;
+
+                let m = Number(tab[1]);
+
+                let an = Number(tab[0]);
+
+                d = d + 2;
+
+                if(d > 30){
+                    d = 1;
+                    m = m + 1;
+                    if(m >12){
+                        m = "01";
+                        an++;
+                    }
+                }
+
+                if(d<10)
+                    d = "0"+ d;
+
+                if(m<10)
+                    m = "0"+ m;
+
+                date_fin_min = an + '-' + m + '-' + d;
+
+
+                date_fin.min = date_fin_min;
+            });
+        </script>
     </body>
 </html>

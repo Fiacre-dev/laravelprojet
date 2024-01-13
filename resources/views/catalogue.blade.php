@@ -11,6 +11,7 @@
             referrerpolicy="no-referrer"
         />
         <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;1,400&family=Poppins:ital,wght@0,100;0,400;1,500;1,600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('assets/css/catalogue.css') }}" />
@@ -18,31 +19,25 @@
     </head>
     <body>
         <div>
-            <header>
-                <div class="logo">
-                    <h1>Auto<span>Rent.</span></h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="{{ route('acceuil') }}">Accueil</a></li>
-                        <li><a href="#" class="active">Catalogue</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </nav>
-                <a href="{{ route('login') }}">Se connecter</a>
-            </header>
+            @component('component.header')
+
+            @endcomponent
             <main>
                 <section class="nombre-resultats">
-                    <h1>23 résultats <span>trouvés</span></h1>
+                    <h1>{{ $vehicules->count() }} résultats <span>trouvés</span></h1>
                     <div>
-                        <span>Trier par</span>
-                        <select name="motif_tri" id="">
-                            <option value="">Nb de places</option>
-                            <option value="">Nb de places</option>
-                            <option value="">Nb de places</option>
-                            <option value="">Nb de places</option>
-                            <option value="">Nb de places</option>
-                        </select>
+                        <form  action="{{ request()->fullUrl() }}" id="tri_form" method="get">
+                            <span>Trier par</span>
+                            <select name="motif_tri" id="">
+                                <option value="" hidden>Sélectionnez</option>
+                                <option value="nom_voiture" @selected(request('motif_tri') === "nom_voiture")>Nom</option>
+                                <option value="places" @selected(request('motif_tri') === "places")>Nb de places</option>
+                                <option value="prix" @selected(request('motif_tri') === "prix")>Prix de location</option>
+                                <option value="nombre" @selected(request('motif_tri') === "nombre")>Nb disponible</option>
+                                {{-- <option value="">Nb de places</option>
+                                <option value="">Nb de places</option> --}}
+                            </select>
+                        </form>
                     </div>
                 </section>
                 <div class="hierarchie">
@@ -51,7 +46,7 @@
                     <a href="{{ route('catalogue') }}">Catalogue</a>
                 </div>
                 <section id="result-section">
-                    <section class="filtre-section">
+                    <form class="filtre-section" action="{{ request()->fullUrl() }}" method="get">
                         <div class="head">
                             <h2>Filtre</h2>
                             <a href="#">Supprimer les filtres</a>
@@ -62,11 +57,11 @@
                                 Transmission
                             </h3>
                             <div class="filtre-options">
-                                <input type="checkbox" name="transmission" value="manuel" id="manuel">
+                                <input type="checkbox" name="type_transmission" value="manuel" id="manuel" @checked(request('type_transmission') === "manuel")>
                                 <label for="transmission">Manuel</label>
                             </div>
                             <div class="filtre-options">
-                                <input type="checkbox" name="transmission" value="automatique" id="automatique">
+                                <input type="checkbox" name="type_transmission" value="automatique" id="automatique" @checked(request('type_transmission') === "automatique")>
                                 <label for="automatique">Automatique</label>
                             </div>
                         </div>
@@ -76,17 +71,21 @@
                                 Carburant
                             </h3>
                             <div class="filtre-options">
-                                <input type="checkbox" name="carburant" value="gasoil" id="gasoil">
+                                <input type="checkbox" name="type_carburant" value="gasoil" id="gasoil" @checked(request('type_carburant') === "gasoil")>
                                 <label for="gasoil">Gasoil</label>
                             </div>
                             <div class="filtre-options">
-                                <input type="checkbox" name="carburant" value="essence" id="essence">
+                                <input type="checkbox" name="type_carburant" value="essence" id="essence" @checked(request('type_carburant') === "essence")>
                                 <label for="essence">Essence</label>
                             </div>
                         </div>
-                    </section>
+                    </form>
                     <section class="vehicules-trouves">
-                            <article>
+                        @foreach ($vehicules  as $vehicule)
+                            @component('component.presentation-voiture',["vehicule" => $vehicule])
+                            @endcomponent
+                        @endforeach
+                            {{-- <article>
                                 <div class="image">
                                     <img src="{{ asset('assets/img/voiture31.png') }}" alt="">
                                     <button class="add-to-favorite">❤️</button>
@@ -269,10 +268,11 @@
                                     </div>
                                 </div>
                                 <a href="#">Réserver</a>
-                            </article>
+                            </article> --}}
                     </section>
                 </section>
             </main>
+            {{ $vehicules->links() }}
             <footer>
                 <div>
                     <section class="description">
@@ -323,5 +323,21 @@
                 </p>
             </footer>
         </div>
+        {{-- Forms handle action --}}
+        <script>
+            const tri_form = document.getElementById("tri_form");
+            const select = document.querySelector("#tri_form select");
+            select.addEventListener("change",function(){
+                tri_form.submit();
+            })
+
+
+            const filtre_section_form = document.querySelector(".filtre-section");
+            filtre_section_form.querySelectorAll("input").forEach(function($elem){
+                $elem.addEventListener("input",function(){
+                    filtre_section_form.submit();
+                });
+            });
+        </script>
     </body>
 </html>
