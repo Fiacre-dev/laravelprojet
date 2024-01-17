@@ -22,7 +22,6 @@
     <body>
         <div>
             @component('component.header')
-
             @endcomponent
             <main>
                 <h1>Liste des véhicules</h1>
@@ -48,15 +47,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for ($i=1;$i<=20;$i++)
+                            @foreach ($vehicules as $vehicule)
                             <tr>
-                                <td>{{ $i }}</td>
+                                <td>{{ $vehicule->id }}</td>
                                 <td>
                                     <img src="{{ asset('assets/img/voiture4.png') }}" alt="">
                                 </td>
-                                <td>Corolla Vendetta</td>
-                                <td>Manuel</td>
-                                <td>12.000</td>
+                                <td>{{ $vehicule->nom }}</td>
+                                <td>{{ $vehicule->transmission }}</td>
+                                <td>{{ $vehicule->prix_location }}</td>
                                 <td class="buttons">
                                     <button type="button" class="edit-buuton">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
@@ -64,7 +63,7 @@
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M47.6978 18.0831C46.7245 17.1101 45.4046 16.5635 44.0283 16.5635C42.6521 16.5635 41.3321 17.1101 40.3588 18.0831L39.1357 19.308L47.6996 27.8719L48.921 26.6488C49.4031 26.1668 49.7855 25.5946 50.0463 24.9648C50.3072 24.3351 50.4415 23.6601 50.4415 22.9784C50.4415 22.2967 50.3072 21.6217 50.0463 20.992C49.7855 20.3622 49.4031 19.79 48.921 19.308L47.6978 18.0831ZM45.2515 30.3183L36.6876 21.7544L20.9611 37.4826C20.617 37.8268 20.3765 38.2608 20.2673 38.7351L18.4871 46.4427C18.4207 46.7288 18.4284 47.0271 18.5092 47.3095C18.59 47.5919 18.7414 47.8491 18.9491 48.0567C19.1568 48.2644 19.414 48.4158 19.6963 48.4967C19.9787 48.5775 20.277 48.5851 20.5632 48.5188L28.2724 46.7403C28.7462 46.6307 29.1796 46.3904 29.5233 46.0465L45.2515 30.3183Z" fill="black"/>
                                         </svg>
                                     </button>
-                                    <button type="button" class="kdelete-buuton">
+                                    <button type="button" class="delete-buuton">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
                                             <g clip-path="url(#clip0_309_974)">
                                               <circle cx="31" cy="30" r="32" fill="white"/>
@@ -79,7 +78,7 @@
                                     </button>
                                 </td>
                             </tr>
-                            @endfor
+                            @endforeach
                         </tbody>
                     </table>
                 </section>
@@ -133,6 +132,11 @@
                     @Copywrite. All Rights Reserved
                 </p>
             </footer>
+
+            <form action="" id="deleteForm" method="post">
+                @method("delete")
+                @csrf
+            </form>
         </div>
 
 
@@ -141,5 +145,6 @@
                 // options
             });
         </script>
+        <script src="{{ asset("assets/js/listeVehicule.js") }}"></script>
     </body>
 </html>

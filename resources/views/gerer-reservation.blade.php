@@ -44,21 +44,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for ($i=1;$i<=20;$i++)
+                            @foreach ($reservations as $reservation)
                                 <tr>
-                                <td>{{ $i }}</td>
+                                <td>{{ $reservation->id }}</td>
                                 <td>
                                     <img src="{{ asset('assets/img/voiture4.png') }}" alt="">
                                 </td>
-                                <td>Corolla Vendetta</td>
-                                <td>Manuel</td>
+                                <td>{{ $reservation->vehicule->nom ??"nom" }}</td>
+                                <td>{{ $reservation->date_fin??"trans" }}</td>
                                 <td class="buttons">
-                                    <button>
+                                    <button class="rendre-button">
                                         Rendre
                                     </button>
                                 </td>
                             </tr>
-                            @endfor
+                            @endforeach
                         </tbody>
                     </table>
                 </section>
@@ -114,11 +114,16 @@
             </footer>
         </div>
 
+        <form action="" id="rendreForm" method="post">
+            @method("put")
+            @csrf
+        </form>
 
         <script>
             let table = new DataTable('#vehicule-table', {
                 // options
             });
         </script>
+        <script src="{{ asset("assets/js/gerer_reservation.js") }}"></script>
     </body>
 </html>

@@ -19,3 +19,13 @@
         </a>
     @endauth
 </header>
+@if(session()->get("success"))
+    <div class="alert alert-suscess" style="margin-bottom:30px">
+        {{ session()->get("success") }}
+    </div>
+@endif
+@if(session()->get("error"))
+    <div class="alert alert-danger" style="margin: 30px">
+        {{ session()->get("error") }}
+    </div>
+@endif

@@ -43,11 +43,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for ($i=1;$i<=20;$i++)
+                            @foreach ($clients as $client)
                             <tr>
-                                <td>{{ $i }}</td>
-                                <td>Corolla Vendetta</td>
-                                <td>alex@gmail.com</td>
+                                <td>{{ $client->id }}</td>
+                                <td>{{ $client->nom }}</td>
+                                <td>{{ $client->email }}</td>
                                 <td class="buttons">
                                     <button type="button" class="kdelete-buuton">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
@@ -57,7 +57,7 @@
                                     </button>
                                 </td>
                             </tr>
-                            @endfor
+                            @endforeach
                         </tbody>
                     </table>
                 </section>
