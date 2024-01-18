@@ -37,6 +37,7 @@ Route::middleware(["guest"])->group(function () {
 Route::middleware("auth")->group(function () {
     Route::post("logout", [AuthController::class, "logout"])->name("logout")->middleware("auth");
     Route::get("liste-vehicules", [AdminCOntroller::class, "listeVehicule"])->name("liste_vehicule");
+    Route::post("edit/vehicule/{vehicule}", [AdminCOntroller::class, "editVehicule"])->name("vehicule.edit");
     Route::delete("delete/vehicule/{vehicule}", [AdminCOntroller::class, "deleteVehicule"])->name("vehicule.delete");
     Route::get("liste-clients", [AdminCOntroller::class, "listeClients"])->name("liste_clients");
     Route::get("gerer-reservation", [AdminCOntroller::class, "listeReservations"])->name("gerer_reservation");

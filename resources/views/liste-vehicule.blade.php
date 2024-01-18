@@ -11,6 +11,7 @@
             referrerpolicy="no-referrer"
         />
         <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;1,400&family=Poppins:ital,wght@0,100;0,400;1,500;1,600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('assets/css/liste-vehicule.css') }}" />
@@ -57,7 +58,7 @@
                                 <td>{{ $vehicule->transmission }}</td>
                                 <td>{{ $vehicule->prix_location }}</td>
                                 <td class="buttons">
-                                    <button type="button" class="edit-buuton">
+                                    <button type="button" class="edit-button" data-toggle="modal" data-target="#exampleModalCenter">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
                                             <circle cx="32" cy="32" r="32" fill="white"/>
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M47.6978 18.0831C46.7245 17.1101 45.4046 16.5635 44.0283 16.5635C42.6521 16.5635 41.3321 17.1101 40.3588 18.0831L39.1357 19.308L47.6996 27.8719L48.921 26.6488C49.4031 26.1668 49.7855 25.5946 50.0463 24.9648C50.3072 24.3351 50.4415 23.6601 50.4415 22.9784C50.4415 22.2967 50.3072 21.6217 50.0463 20.992C49.7855 20.3622 49.4031 19.79 48.921 19.308L47.6978 18.0831ZM45.2515 30.3183L36.6876 21.7544L20.9611 37.4826C20.617 37.8268 20.3765 38.2608 20.2673 38.7351L18.4871 46.4427C18.4207 46.7288 18.4284 47.0271 18.5092 47.3095C18.59 47.5919 18.7414 47.8491 18.9491 48.0567C19.1568 48.2644 19.414 48.4158 19.6963 48.4967C19.9787 48.5775 20.277 48.5851 20.5632 48.5188L28.2724 46.7403C28.7462 46.6307 29.1796 46.3904 29.5233 46.0465L45.2515 30.3183Z" fill="black"/>
@@ -82,6 +83,62 @@
                         </tbody>
                     </table>
                 </section>
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <form class="modal-dialog modal-dialog-centered" method="post" role="document" id="edit-vehicule-form">
+                    @csrf
+                    @method("post")
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Edition d'un véhicule</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="border:none">
+                        <span aria-hidden="true" class="btn btn-primary">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nom du véhicule</label>
+                            <input type="text" class="form-control" name="nomVehicule" id="nomVehicule" aria-describedby="emailHelp" placeholder="New name">
+                            {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Prix</label>
+                            <input type="number" class="form-control" name="prixVehicule" id="prixVehicule" placeholder="40 000">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Quotion</label>
+                            <input type="number" class="form-control" name="quotionVehicule" id="quotionVehicule" placeholder="40 000">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Prix siège enfant</label>
+                            <input type="number" class="form-control"- name="place_enfantVehicule" id="place_enfantVehicule" placeholder="5 000">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Prix chauffeur</label>
+                            <input type="number" class="form-control" name="chauffeurVehicule" id="chauffeurVehicule" placeholder="10 000">
+                          </div>
+                          <label for="Transmission">Transmission</label>
+                          <div class="form-check">
+                            <input type="radio" class="form-check-input" id="manuelle" name="transmission" value="Manuelle">
+                            <label class="form-check-label" for="manuelle">Manuelle</label>
+                          </div>
+                          <div class="form-check">
+                            <input type="radio" class="form-check-input" id="automatique" name="transmission" value="Automatique">
+                            <label class="form-check-label" for="automatique">Automatique</label>
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" id="submit-edit-form-button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </form>
+                </div>
             </main>
             <footer>
                 <div>
@@ -145,6 +202,9 @@
                 // options
             });
         </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="{{ asset("assets/js/listeVehicule.js") }}"></script>
     </body>
 </html>

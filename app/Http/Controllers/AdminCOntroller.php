@@ -39,4 +39,22 @@ class AdminCOntroller extends Controller
         session()->flash("success", "Réservation approuvée avec succès");
         return to_route("gerer_reservation");
     }
+
+    public function editVehicule(Vehicule $vehicule, Request $request)
+    {
+        $vehicule->update([
+            "nom" => $request->input("nomVehicule"),
+            "prix_location" => $request->input("prixVehicule"),
+            "quotion" => $request->input("quotionVehicule"),
+            "prix_siege_enfant" => $request->input("place_enfantVehicule"),
+            "prix_chauffeur" => $request->input("chauffeurVehicule"),
+            "transmission" => $request->input("transmission"),
+        ]);
+
+        return back()->with("success", "Opération éffectuée avec succès");
+    }
+
+    // public function getVehicule($id){
+    //     $vehicule =
+    // }
 }
