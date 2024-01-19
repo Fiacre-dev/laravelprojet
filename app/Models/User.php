@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reservation::class);
     }
+
+    public function reservationsEnCours()
+    {
+        return $this->hasMany(Reservation::class)->where("date_fin", ">", now());
+    }
 }
