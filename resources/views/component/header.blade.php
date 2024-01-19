@@ -20,7 +20,7 @@
     @endauth
 </header>
 @if(session()->get("success"))
-    <div class="alert alert-suscess" style="margin-bottom:30px">
+    <div class="alert alert-sussess" style="margin-bottom:30px">
         {{ session()->get("success") }}
     </div>
 @endif

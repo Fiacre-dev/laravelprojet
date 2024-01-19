@@ -177,6 +177,7 @@ section > div form .form-group label svg {
 section > div form .form-group input,
 section > div form .form-group select {
     width: 100%;
+    position: relative;
     margin-inline: 30px;
     padding: 10px;
     border: 1px solid #d9d9d9;
@@ -185,6 +186,16 @@ section > div form .form-group select {
     color: rgba(0, 0, 0, 0.5);
     font-size: 24px;
     font-weight: 500;
+}
+section > div form .form-group input::-webkit-calendar-picker-indicator{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height:100%;
+    z-index:10;
+    opacity:0;
 }
 section > div form .extra {
     margin-inline: 20px;

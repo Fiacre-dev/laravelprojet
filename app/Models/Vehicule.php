@@ -24,6 +24,11 @@ class Vehicule extends Model
 
     public $timestamps = false;
 
+    public function livraisons()
+    {
+        return $this->hasManyThrough(Livraison::class, Reservation::class);
+    }
+
     public function reservations()
     {
         return $this->hasMany(Reservation::class);

@@ -28,4 +28,9 @@ class Reservation extends Model
     {
         return $this->belongsTo(Vehicule::class);
     }
+
+    public function livraison()
+    {
+        return $this->hasOne(Livraison::class);
+    }
 }
