@@ -8,16 +8,19 @@
             <li><a href="{{ route('catalogue') }}" @class(["active" => request()->route()->getName() == "catalogue"])>Catalogue</a></li>
             <li><a href="#">Give-Back</a></li>
             <li><a href="{{ route('contact') }}" @class(["active" => request()->route()->getName() == "contact"])>Contact</a></li>
-            <div class="dropdown">
-                <button class="btn bold btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Admin
-                </button>
-                <div class="dropdown-menu mt-2" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="{{ route("liste_vehicule") }}">Gestion des véhicules</a>
-                  <a class="dropdown-item" href="{{ route("liste_clients") }}">Gestion des clients</a>
-                  <a class="dropdown-item" href="{{ route("gerer_reservation") }}">Gerer les réservations</a>
+
+            @admin
+                <div class="dropdown">
+                    <button class="btn bold btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Admin
+                    </button>
+                    <div class="dropdown-menu mt-2" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ route("liste_vehicule") }}">Gestion des véhicules</a>
+                        <a class="dropdown-item" href="{{ route("liste_clients") }}">Gestion des clients</a>
+                        <a class="dropdown-item" href="{{ route("gerer_reservation") }}">Gerer les réservations</a>
+                    </div>
                 </div>
-              </div>
+            @endadmin
         </ul>
     </nav>
     @guest

@@ -31,7 +31,7 @@ class AdminCOntroller extends Controller
     }
     public function listeClients()
     {
-        return view("liste-clients", ["clients" => User::where("is_admin", 0)->get()]);
+        return view("liste-clients", ["clients" => User::where("is_admin", 0)->has("reservations")->get()]);
     }
     public function listeReservations()
     {

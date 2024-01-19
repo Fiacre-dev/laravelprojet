@@ -89,7 +89,7 @@
 
 <!-- Modal -->
                 <div class="modal fade" id="addModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <form class="modal-dialog modal-dialog-centered" method="post" role="document" id="edit-vehicule-form" action="{{ route("vehicule.store") }}">
+                <form class="modal-dialog modal-dialog-centered" method="post" role="document" action="{{ route("vehicule.store") }}">
                     @csrf
                     @method("post")
                     <div class="modal-content">
@@ -102,7 +102,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nom du véhicule</label>
-                            <input type="text" class="form-control @error("nomVehicule") is-invalid  @enderror"  name="nomVehicule" id="nomVehicule" value="{{ old("nomVehicule") }}" aria-describedby="emailHelp" placeholder="New name" required>
+                            <input type="text" class="form-control @error("nomVehicule") is-invalid  @enderror"  name="nomVehicule" id="nomNouveauVehicule" value="{{ old("nomVehicule") }}" aria-describedby="emailHelp" placeholder="New name" required>
                             {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
                           </div>
                           <div class="form-group">
@@ -150,7 +150,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" id="submit-create-form-button" class="btn btn-primary">Save changes</button>
+                        <button type="submit"  class="btn btn-primary">Save changes</button>
                     </div>
                     </div>
                 </form>
@@ -160,7 +160,7 @@
 
 
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <form class="modal-dialog modal-dialog-centered" method="post" role="document" id="edit-vehicule-form">
+                    <form class="modal-dialog modal-dialog-centered"  method="post" role="document" id="edit-vehicule-form">
                         @csrf
                         @method("post")
                         <div class="modal-content">
@@ -173,7 +173,7 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nom du véhicule</label>
-                                <input type="text" class="form-control" name="nomVehicule" id="nomVehicule" aria-describedby="emailHelp" placeholder="New name">
+                                <input type="text" class="form-control" name="nomVehicule" id="nomVehicule"  placeholder="New name" value="nom">
                                 {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
                               </div>
                               <div class="form-group">

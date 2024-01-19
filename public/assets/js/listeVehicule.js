@@ -45,9 +45,19 @@ document.querySelectorAll(".edit-button").forEach(function(button){
                             manuelleInput.checked = true;
                         }
 
+                        editForm.setAttribute("action","/edit/vehicule/" + id);
+
                         editForm.action = "/edit/vehicule/" + id;
+                        console.log(editForm)
                         submitEditFormButton.removeAttribute("disabled");
-                        // editForm.submit();
+                        submitEditFormButton.addEventListener("click",function(e){
+                            e.preventDefault();
+                            editForm.submit();
+                        });
+                        editForm.addEventListener("submit",function(e){
+                            e.preventDefault();
+                            editForm.submit();
+                        });
                     }
                 }).catch(function(){
                     console.log("Error");

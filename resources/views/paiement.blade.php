@@ -52,7 +52,7 @@
                     </div>
                     <h2>Order summary</h2>
                     <div class="summary-group">
-                        <h3>{{ $reservation->vehicule->nom }}Toyota Corolla (06 jours)</h3>
+                        <h3>{{ $reservation->vehicule->nom }}</h3>
                         <p class="value">{{ $reservation->montant }}</p>
                     </div>
                     <div class="summary-group">
