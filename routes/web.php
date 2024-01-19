@@ -44,6 +44,8 @@ Route::middleware("auth")->group(function () {
 
 
     Route::get("liste-clients", [AdminCOntroller::class, "listeClients"])->name("liste_clients");
+
+
     Route::get("gerer-reservation", [AdminCOntroller::class, "listeReservations"])->name("gerer_reservation");
     Route::put("render/reservation/{reservation}", [AdminCOntroller::class, "renderReservation"])->name("render_reservation");
     Route::post("/save/reservation/paiement", [PresentationVoitureController::class, "save"])->name("save_reservation");
