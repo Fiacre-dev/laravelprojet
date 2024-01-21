@@ -36,6 +36,10 @@ Route::middleware(["guest"])->group(function () {
 });
 Route::middleware("auth")->group(function () {
     Route::post("logout", [AuthController::class, "logout"])->name("logout");
+    Route::get("logout", [AuthController::class, "logout"])->name("logout");
+    Route::get("history",function(){
+        return view("historique", ["reservations" => auth()->user()->reservations()->with("vehicule")->get()]);
+    })->name("history");
 
     Route::middleware("admin")->group(function () {
         Route::get("liste-vehicules", [AdminCOntroller::class, "listeVehicule"])->name("liste_vehicule");

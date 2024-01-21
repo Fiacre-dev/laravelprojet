@@ -4,10 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Reservation;
-use App\Models\Vehicule;
+use App\Models\User;
 use App\Models\Ville;
+use App\Models\Vehicule;
+use App\Models\Reservation;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +21,14 @@ class DatabaseSeeder extends Seeder
         /**
          * @var \Illuminate\Database\Eloquent\Collection
          */
+
+         User::create([
+            "nom" => "admin",
+            "email" => "admin@gmail.com",
+            "is_admin" => 1,
+            "password" => Hash::make("admin")
+         ]);
+
         $villes = Ville::factory(20)->create();
         $vehicules = Vehicule::factory(50)->create();
         \App\Models\User::factory(50)->create()->each(function ($user) use ($villes, $vehicules) {

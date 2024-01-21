@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/gerer-reservation.css') }}" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <title>AutoRent | Gérer une réservation</title>
+    <title>AutoRent | Mes réservations</title>
 </head>
 
 <body>
@@ -45,7 +45,7 @@
                             <th>Photo</th>
                             <th>Model Name</th>
                             <th>Date fin</th>
-                            <th>Actions</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,11 +57,16 @@
                             </td>
                             <td>{{ $reservation->vehicule->nom ??"nom" }}</td>
                             <td>{{ $reservation->date_fin??"trans" }}</td>
-                            <td class="buttons">
-                                <button class="rendre-button" data-toggle="modal" data-target="#exampleModalCenter">
-                                    Approuver
-                                </button>
+                            @if(($reservation->date_fin ?? now())->gt(now()))
+                            <td>
+                                Livré
                             </td>
+                            @else
+                            <td>
+                                En cours
+                            </td>
+
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
@@ -97,18 +102,11 @@
         @endcomponent
     </div>
 
-
-    <form action="" id="rendreForm" method="post">
-        @method("put")
-        @csrf
-    </form>
-
     <script>
     let table = new DataTable('#vehicule-table', {
         // options
     });
     </script>
-    <script src="{{ asset("assets/js/gerer_reservation.js") }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
